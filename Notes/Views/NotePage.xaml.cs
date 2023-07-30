@@ -21,18 +21,25 @@ public partial class NotePage : ContentPage
             File.WriteAllText(note.Filename, TextEditor.Text);
 
         await Shell.Current.GoToAsync("..");
+        await Shell.Current.DisplayAlert("Notes", "Your notes has been saved", "OK");
     }
 
     private async void DeleteButton_Clicked(object sender, EventArgs e)
     {
-        if (BindingContext is Models.Note note)
-        {
-            // Delete the file.
-            if (File.Exists(note.Filename))
-                File.Delete(note.Filename);
-        }
 
-        await Shell.Current.GoToAsync("..");
+        bool answer = await DisplayAlert("Are you sure?", "Do you want to delete?", "Yes", "No");
+        
+        if (answer)
+        {
+            if (BindingContext is Models.Note note)
+            {
+                // Delete the file.
+                if (File.Exists(note.Filename))
+                    File.Delete(note.Filename);
+            }
+            await Shell.Current.GoToAsync("..");
+        }
+       
     }
 
     private void LoadNote(string fileName)

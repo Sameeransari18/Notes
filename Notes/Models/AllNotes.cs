@@ -1,4 +1,5 @@
 ﻿using System.Collections.ObjectModel;
+using System.Linq;
 
 namespace Notes.Models;
 
@@ -31,7 +32,7 @@ internal class AllNotes
                                     })
 
                                     // With the final collection of notes, order them by date
-                                    .OrderBy(note => note.Date);
+                                    .OrderByDescending(note => note.Date);
 
         // Add each note into the ObservableCollection
         foreach (Note note in notes)

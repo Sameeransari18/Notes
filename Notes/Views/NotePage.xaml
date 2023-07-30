@@ -7,15 +7,19 @@
         <Editor x:Name="TextEditor"
                 Placeholder="Enter your note"
                 Text="{Binding Text}"
-                HeightRequest="100" />
+                HeightRequest="100" 
+                FontSize="20" />
 
         <Grid ColumnDefinitions="*,*" ColumnSpacing="4">
             <Button Text="Save"
-                    Clicked="SaveButton_Clicked" />
+                    Clicked="SaveButton_Clicked" 
+                    ToolTipProperties.Text="Click to Save your data" />
+
 
             <Button Grid.Column="1"
                     Text="Delete"
-                    Clicked="DeleteButton_Clicked" />
+                    Clicked="DeleteButton_Clicked" 
+                    ToolTipProperties.Text="Click to Remove your data" />
         </Grid>
     </VerticalStackLayout>
 </ContentPage>
